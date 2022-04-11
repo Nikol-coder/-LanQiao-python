@@ -1,0 +1,35 @@
+#使用素数筛 埃氏筛
+a=[0 for i in range(20000+10)]
+prime=[0 for i in range(20000+10)]
+
+def init2():
+    k=0
+    n=10000
+    a[0]=1
+    a[1]=1
+    for i in range(10000):
+        if a[i]:
+            continue
+        j=i
+        while j*i<n: #质数打表,质数为0,不是质数为1
+            a[i*j]=1
+            j+=1
+        prime[k]=i
+        k+=1
+
+
+def solve():
+    for i in range(10000):
+        kk=prime[i]#质数 #首项
+        for k in range(1,1000):#公差
+            num=0
+            while num<10:
+                if a[kk+num*k]:
+                    break
+                num+=1
+            if num==10:
+                return k
+
+init2()
+print("%d"%(solve()))
+

@@ -1,0 +1,24 @@
+#时差假设为d 从A地到B出发t1 到达t2  时间=t2-t1-d
+#从B地到A 出发t3 达到t4 时间=t4-t3+d 所以时间=[t2+t4-(t1+t3)]//2
+def gettime():
+    t=input()
+    if t[-1]!=')':
+        t+=" (+0)"
+    t1,t2,d=t.split()
+    h1,m1,s1=map(int,t1.split(":"))
+    h2,m2,s2=map(int,t2.split(":"))
+    d=eval(d)
+    time=(h2+d*24-h1)*60*60+(m2-m1)*60+(s2-s1)
+    return time
+
+cc=int(input())
+for i in range(cc):
+    tt1=gettime()
+    tt2=gettime()
+    tt=tt2+tt1
+    tt>>=1
+    hour=(tt%(24*60*60))//(60*60)
+    minute=(tt%(60*60))//60
+    second=tt%60
+    print("%02d:%02d:%02d"%(hour,minute,second))
+        

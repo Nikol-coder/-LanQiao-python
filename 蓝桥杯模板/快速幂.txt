@@ -1,0 +1,15 @@
+#快速幂
+def qpow(a,b,p):
+    ss=1
+    while b:
+        if b&1:
+            ss=ss*a%p
+        a=a*a%p
+        b>>=1
+    return ss
+
+
+n=int(input())
+for i in range(n):
+    a,b,p=map(int,input().split())
+    print(qpow(a,b,p))

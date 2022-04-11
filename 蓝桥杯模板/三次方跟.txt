@@ -1,0 +1,11 @@
+#6位小数 1e-8
+n=float(input())
+l=-100
+r=100
+while r-l>1e-8:
+    mid=(l+r)/2
+    if mid**3>n:
+        r=mid
+    else:
+        l=mid
+print("%.6f"%(r))

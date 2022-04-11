@@ -1,0 +1,16 @@
+#区间合并 找左端点 贪心
+a=[]
+n=int(input())
+for i in range(n):
+    l,r=map(int,input().split())
+    a.append([l,r])
+sorted(a)
+cnt=1
+maxr=a[0][1]
+for i in range(1,n):
+    if a[i][0]<=maxr:
+        maxr=max(maxr,a[i][1])
+    else:
+        cnt+=1
+        maxr=a[i][1]
+print(cnt)

@@ -1,0 +1,58 @@
+https://blog.csdn.net/atupal/article/details/8604243
+ python 进制转换小结
+
+part 1： 十进制转16进制
+>>> hex(18)
+'0x12'
+
+part 2： 16进制转10进制
+>>> int(0x12)
+18
+# 如果遇到数字的字符串表示，‘18’， ‘0x12’:
+>>> int('18')
+18
+>>> hex(int('18'))
+'0x12'
+>>> int('0x12',16)
+18
+
+part 3: ascii 码的字符表示
+>>> chr(97)
+'a'
+
+part 4： 字符的ascii 码表示：
+>>> ord('a')
+97
+>>> ord('\xbc')
+188
+
+part 5: 将ascii 码转为16进制
+>>> import binascii
+>>> print binascii.b2a_hex('LN')  
+4c4e
+>>> print binascii.b2a_hex('辽')   
+e8bebd
+>>> print binascii.b2a_hex('宁')   
+e5ae81
+>>> binascii.b2a_hex("A")  # A 对应的ASCII码为97， 转换成 16进制就是 41
+'41'
+>>> a = u"辽"
+>>> a.encode("GBK")
+'\xc1\xc9'
+>>> b = a.encode("GBK")
+>>> binascii.b2a_hex(b)
+'c1c9'
+
+
+part 6: 将16进制转为ascii 码
+>>> print binascii.a2b_hex('21')
+!
+>>> print binascii.a2b_hex('41')
+A
+>>> print binascii.a2b_hex('4c4e')
+LN
+>>> print binascii.a2b_hex('e8bebd')
+辽
+>>> print binascii.a2b_hex('e5ae81')
+宁
+

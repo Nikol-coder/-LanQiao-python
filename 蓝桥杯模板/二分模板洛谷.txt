@@ -1,0 +1,26 @@
+n,c=map(int,input().split())
+#找上下边界
+cnt=0
+a=list(map(int,input().split()))
+for i in range(n):
+    l=i+1
+    r=n-1
+    while l<=r: #先找左
+        mid=l+r>>1
+        if a[mid]>=a[i]+c:
+            r=mid-1
+        else:
+            l=mid+1
+    ll=r
+    l=i+1
+    r=n-1
+    while l<=r: #再找右
+        mid=l+r>>1
+        if a[mid]>a[i]+c:
+            r=mid-1
+        else:
+            l=mid+1
+    rr=r
+    cnt+=(rr-ll)
+    
+print(cnt)

@@ -1,0 +1,41 @@
+def merge(l,r):
+    if l>=r:
+        return  
+    mid=l+r>>1
+    merge(l,mid)
+    merge(mid+1,r)
+    i=l
+    j=mid+1
+    k=0
+    while i<=mid and j<=r:
+        if a[i]<=a[j]:
+            tmp[k]=a[i]
+            k+=1
+            i+=1
+        else:
+            tmp[k]=a[j]
+            k+=1
+            j+=1
+    while i<=mid:
+        tmp[k]=a[i]
+        k+=1
+        i+=1
+    while j<=r:
+        tmp[k]=a[j]
+        k+=1
+        j+=1
+    i=l
+    k=0
+    while i<=r:
+        a[i]=tmp[k]
+        i+=1
+        k+=1
+
+            
+
+n=int(input())
+a=list(map(int,input().split()))
+tmp=[0 for i in range(100000)]
+merge(0,n-1)
+for i in range(n):
+    print(a[i],end=" ")

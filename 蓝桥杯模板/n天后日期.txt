@@ -1,0 +1,19 @@
+给定一个日期和天数n，求n天后的日期。方法：一天一天的加
+from datetime import *
+d1=datetime(2020,1,1)
+n=7
+for i in range(n):
+    d1+=timedelta(days=1)
+print(d1.date()) #日期
+print(d1.weekday()+1) #星期几 星期一为0
+
+
+from datetime import *
+x,y,z=map(int,input().split())
+d1=datetime(x,y,z) #输入日期
+n=7
+for i in range(n):
+    d1+=timedelta(days=1)
+print(d1.date())
+print(d1.weekday()+1)
+

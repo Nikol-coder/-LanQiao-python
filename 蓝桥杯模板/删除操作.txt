@@ -1,0 +1,13 @@
+m,n=map(int,input().split())
+b=[i for i in range(n)]
+a=[i for i in range(m+1,n)]
+del b[2::2] #删除2及小表2
+now=2
+while b[now]<=len(b)-1:
+   del b[b[now]::b[now]]##删除小标为B[now]的
+   now+=1
+count=0
+for i in a:#检查A中的序列号有几个在B中
+    if i in b:
+        count+=1
+print(count)

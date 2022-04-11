@@ -1,0 +1,33 @@
+n=int(input())
+st1=[[0 for i in range(n+5)]for i in range(n+5)]
+g=[]
+cnt=0
+flag=0
+dx=[-1,1,0,0]
+dy=[0,0,-1,1]
+
+def dfs(a,b):
+    global flag
+    st1[a][b]=1
+    if g[a+1][b]=='#' and g[a-1][b]=='#' and g[a][b-1]=='#' and g[a][b+1]=='#':
+        flag=1
+    for i in range(4):
+        x=a+dx[i]
+        y=b+dy[i]
+        if g[x][y]=='#' and st1[x][y]==0:
+            dfs(x,y)
+    
+    
+
+for i in range(n):
+    g.append(list(map(str,input().strip())))
+
+
+for i in range(n):
+    for j in range(n):
+        if g[i][j]=='#' and st1[i][j]==0:
+            flag=0
+            dfs(i,j)
+            if flag==0:
+                cnt+=1
+print(cnt)

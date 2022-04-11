@@ -1,0 +1,9 @@
+import itertools
+x=int(input())
+a=[i for i in range(1,x+1)]
+c=itertools.permutations(a,x)
+
+for i in c:
+    for j in i:
+        print(j,end=" ")
+    print()

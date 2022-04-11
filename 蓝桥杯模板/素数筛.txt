@@ -1,0 +1,19 @@
+prime=[]
+k=0
+n=1000
+st=[0 for i in range(n)]
+
+def ss(n):
+    i=0
+    st[0]=1
+    st[1]=1
+    for i in range(n):
+        if st[i]:
+            continue
+        j=i
+        while i*j<n:
+            st[i*j]=1
+            j+=1
+        prime[k]=i
+        k+=1
+        

@@ -1,0 +1,7 @@
+n=int(input())
+a=list(map(int,input().split()))
+for i in range(len(a)):
+    c=bin(a[i]&0xffffffffff)
+    print(c.count('1'),end=" ")
+
+

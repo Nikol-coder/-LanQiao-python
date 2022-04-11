@@ -1,0 +1,45 @@
+from collections import deque
+n=int(input())
+g=[]
+st=[[0 for i in range(n+5)]for i in range(n+5)]
+cnt=0
+dx=[-1,1,0,0]
+dy=[0,0,-1,1]
+
+def bfs(a,b):
+    global bound,temp
+    st[a][b]=1
+    q=deque()
+    q.append([a,b])
+    while len(q):
+        flag=0
+        temp+=1
+        t=q.popleft()
+        for i in range(4):
+            x=t[0]+dx[i]
+            y=t[1]+dy[i]
+            if x<0 or y<0 or x>=n or y>=n:
+                continue
+            if st[x][y]:
+                continue
+            if g[x][y]=='.':
+                flag=1
+                continue
+            q.append([x,y])
+            st[x][y]=1
+        if flag:
+            bound+=1
+    
+
+for i in range(n):
+    g.append(list(input()))
+
+for i in range(n):
+    for j in range(n):
+        bound=0
+        temp=0
+        if g[i][j]=='#' and st[i][j]==0:#未访问过
+            bfs(i,j)
+            if bound==temp:
+                cnt+=1
+print(cnt)
